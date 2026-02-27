@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/OwaisAli111/gitops-repo.git
+    targetRevision: main
+    path: apps           # 👈 this folder contains service-a.yaml, service-b.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd    # root app itself lives in ArgoCD namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
