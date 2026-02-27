@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: paymentgateway
+  namespace: openshift-gitops          # ArgoCD namespace
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/OwaisAli111/gitops-repo.git
+    targetRevision: main
+    path: helm/payment-gateway
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dis-poc-514020
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
