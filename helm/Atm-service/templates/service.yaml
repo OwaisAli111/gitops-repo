@@ -1,3 +1,4 @@
+{{- if gt (len (.Files.Glob (printf "files/%s" .Values.deployment.configFile))) 0 }}
 apiVersion: v1
 kind: Service
 metadata:
