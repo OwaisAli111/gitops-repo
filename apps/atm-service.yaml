@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: atmService
+  name: atmservice
   namespace: openshift-gitops          # ArgoCD namespace
 spec:
   project: default
