@@ -14,3 +14,4 @@ spec:
       name: http
   selector:
     {{- include "Atm-service.selectorLabels" . | nindent 4 }}
+{{- end }}
